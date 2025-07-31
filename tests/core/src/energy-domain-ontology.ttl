@@ -4,10 +4,45 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @base <https://w3id.org/energy-domain/core#> .
 
 <https://w3id.org/energy-domain/core> rdf:type owl:Ontology ;
-                                       owl:versionIRI <https://w3id.org/energy-domain/core/0.0.1> .
+                                      owl:versionIRI <https://w3id.org/energy-domain/core/0.0.1> .
+
+#################################################################
+#    Annotation Properties
+#################################################################
+
+dcterms:identifier rdf:type owl:AnnotationProperty ;
+                   rdfs:label "identifier"@en ;
+                   rdfs:comment "A unique identifier for the resource."@en .
+
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+                rdfs:label "preferred label"@en ;
+                rdfs:comment "The preferred lexical label for a resource in a given language."@en .
+
+skos:altLabel rdf:type owl:AnnotationProperty ;
+               rdfs:label "alternative label"@en ;
+               rdfs:comment "An alternative lexical label for a resource."@en .
+
+skos:definition rdf:type owl:AnnotationProperty ;
+                 rdfs:label "definition"@en ;
+                 rdfs:comment "A statement or formal explanation of the meaning of a concept."@en .
+
+:ifc_equivalentClass rdf:type owl:AnnotationProperty ;
+                     rdfs:label "IFC Equivalent Class"@en ;
+                     rdfs:comment "The IFC class that is equivalent or analogous to this concept."@en .
+
+:ifc_objectType rdf:type owl:AnnotationProperty ;
+                rdfs:label "IFC Object Type"@en ;
+                rdfs:comment "The Ifc 'ObjectType' property value for this concept."@en .
+
+:ifc_predefinedType rdf:type owl:AnnotationProperty ;
+                    rdfs:label "IFC Predefined Type"@en ;
+                    rdfs:comment "The Ifc 'PredefinedType' enumeration value for this concept."@en .
+
 
 #################################################################
 #    Classes
@@ -15,404 +50,840 @@
 
 ###  https://w3id.org/energy-domain/core#AnchoringCollar
 :AnchoringCollar rdf:type owl:Class ;
-                 rdfs:subClassOf :SplitCollar .
+                 rdfs:subClassOf :SplitCollar ;
+                 dcterms:identifier "AnchoringCollar" ;
+                 skos:prefLabel "Anchoring Collar"@en ;
+                 skos:definition "A mechanical device used to stabilize and secure flexible pipes, risers, or umbilical systems to fixed structures in subsea applications. By clamping onto the outer layers of the pipe, it prevents unwanted movement during installation and operation, helping to maintain alignment and integrity under tension or compression."@en ;
+                 skos:prefLabel "Colar de Ancoragem"@pt-br ;
+                 :ifc_equivalentClass "IfcPipeFitting" ;
+                 skos:altLabel "Anchor Clamp"@en ;
+                 skos:altLabel "Anchoring Device"@en ;
+                 skos:altLabel "Fixation Collar"@en ;
+                 skos:altLabel "Securing Collar"@en .
 
+###  https://w3id.org/energy-domain/core#AnchoringCollarType
+:AnchoringCollarType rdf:type owl:Class ;
+                     dcterms:identifier "AnchoringCollarType" ;
+                     skos:prefLabel "Anchoring Collar Type"@en ;
+                     skos:definition "A mechanical device used to stabilize and secure flexible pipes, risers, or umbilical systems to fixed structures in subsea applications. By clamping onto the outer layers of the pipe, it prevents unwanted movement during installation and operation, helping to maintain alignment and integrity under tension or compression."@en ;
+                     skos:prefLabel "Tipo de Colar de Ancoragem"@pt-br ;
+                     :ifc_equivalentClass "IfcPipeFittingType" ;
+                     skos:altLabel "Anchor Clamp"@en ;
+                     skos:altLabel "Anchoring Device"@en ;
+                     skos:altLabel "Fixation Collar"@en ;
+                     skos:altLabel "Securing Collar"@en ;
+                     :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#AnodeCollarSet
 :AnodeCollarSet rdf:type owl:Class ;
-                rdfs:subClassOf :SplitCollar .
+                rdfs:subClassOf :SplitCollar ;
+                dcterms:identifier "AnodeCollarSet" ;
+                skos:prefLabel "Anode Collar Set"@en ;
+                skos:definition "Sacrificial anode collar set used for corrosion protection in subsea environments. It is designed to attach around pipes or risers and undergo controlled corrosion, thus protecting the metallic structures from rust and degradation. Typically made from zinc or aluminum, it ensures the longevity of subsea equipment by sacrificing itself to prevent corrosion on critical infrastructure."@en ;
+                skos:prefLabel "Conjunto de Colares de Anodo"@pt-br ;
+                :ifc_equivalentClass "IfcPipeFitting" ;
+                skos:altLabel "Anode Clamp"@en ;
+                skos:altLabel "Cathodic Protection Collar"@en ;
+                skos:altLabel "Anode Bracket"@en .
 
+###  https://w3id.org/energy-domain/core#AnodeCollarSetType
+:AnodeCollarSetType rdf:type owl:Class ;
+                    dcterms:identifier "AnodeCollarSetType" ;
+                    skos:prefLabel "Anode Collar Set Type"@en ;
+                    skos:definition "Sacrificial anode collar set used for corrosion protection in subsea environments. It is designed to attach around pipes or risers and undergo controlled corrosion, thus protecting the metallic structures from rust and degradation. Typically made from zinc or aluminum, it ensures the longevity of subsea equipment by sacrificing itself to prevent corrosion on critical infrastructure."@en ;
+                    skos:prefLabel "Tipo de Conjunto de Colares de Anodo"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeFittingType" ;
+                    skos:altLabel "Anode Clamp"@en ;
+                    skos:altLabel "Cathodic Protection Collar"@en ;
+                    skos:altLabel "Anode Bracket"@en ;
+                    skos:altLabel "CP Collar"@en ;
+                    :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#AntiCollapseSheath
 :AntiCollapseSheath rdf:type owl:Class ;
-                    rdfs:subClassOf :SolidLayer .
-
+                    rdfs:subClassOf :SolidLayer ;
+                    dcterms:identifier "AntiCollapseSheath" ;
+                    skos:prefLabel "Anti Collapse Sheath"@en ;
+                    skos:definition "Reinforcement layer in subsea flexible pipes used in oil and gas exploration, designed to prevent the collapse of the pipe under high external pressure conditions, such as those encountered in deepwater environments. Its primary role is to provide structural support against external forces that could compress or deform the pipe, particularly during situations where the internal pressure is reduced or absent, like when the pipe is emptied. Typically made from high-strength metallic or polymeric materials, the Anti Collapse Sheath ensures the integrity of the flexible pipe under extreme conditions."@en ;
+                    skos:prefLabel "Capa Anti-Colapso"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeSegment" .
 
 ###  https://w3id.org/energy-domain/core#AntiWearSheath
 :AntiWearSheath rdf:type owl:Class ;
-                rdfs:subClassOf :SolidLayer .
-
+                rdfs:subClassOf :SolidLayer ;
+                dcterms:identifier "AntiWearSheath" ;
+                skos:prefLabel "Anti Wear Sheath"@en ;
+                skos:definition "Reinforcement layer in subsea flexible pipes used in oil and gas exploration, designed to protect the pipe from external wear and abrasion caused by contact with the seabed, equipment, or other subsea elements. Its primary role is to provide a durable protective barrier that shields the underlying layers from mechanical damage, extending the lifespan of the flexible pipe. Typically made from wear-resistant polymeric materials, the Anti Wear Sheath ensures the pipe's integrity by reducing the risk of surface damage under harsh operating conditions."@en ;
+                skos:prefLabel "Capa Anti-Atrito"@pt-br ;
+                :ifc_equivalentClass "IfcPipeSegment" .
 
 ###  https://w3id.org/energy-domain/core#ArmourLayer
 :ArmourLayer rdf:type owl:Class ;
-             rdfs:subClassOf :WoundLayer .
-
+             rdfs:subClassOf :WoundLayer ;
+             dcterms:identifier "ArmourLayer" ;
+             skos:prefLabel "Armour Layer"@en ;
+             skos:definition "A reinforcement layer in subsea flexible pipes used in oil and gas exploration, designed to provide mechanical strength and protection against external forces, such as pressure and movement. It ensures structural integrity by preventing deformation and failure during operation. Typically made from high-strength metal wires, like carbon steel or stainless steel, the Armor Layer enhances the pipe's durability in harsh underwater conditions."@en ;
+             skos:prefLabel "Camada de Armadura"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#Asset
 :Asset rdf:type owl:Class ;
-       rdfs:subClassOf :DomainObject .
+       rdfs:subClassOf :DomainObject ;
+       dcterms:identifier "Asset" ;
+       skos:prefLabel "Asset"@en ;
+       skos:definition "An asset refers to valuable resources such as platforms, equipment, pipelines, and processing facilities crucial for production and transportation. These assets are managed to optimize performance, ensure safety, and maximize operational efficiency throughout their lifecycle."@en ;
+       skos:prefLabel "Ativo"@pt-br .
 
+###  https://w3id.org/energy-domain/core#AssetType
+:AssetType rdf:type owl:Class ;
+           dcterms:identifier "AssetType" ;
+           skos:prefLabel "Asset Type"@en ;
+           skos:definition "An asset refers to valuable resources such as platforms, equipment, pipelines, and processing facilities crucial for production and transportation. These assets are managed to optimize performance, ensure safety, and maximize operational efficiency throughout their lifecycle."@en ;
+           skos:prefLabel "Tipo de Ativo"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#BendRestrictor
 :BendRestrictor rdf:type owl:Class ;
-                rdfs:subClassOf :LineAncillary .
+                rdfs:subClassOf :LineAncillary ;
+                dcterms:identifier "BendRestrictor" ;
+                skos:prefLabel "Bend Restrictor"@en ;
+                skos:definition "Device used in subsea flexible pipes to limit the bending radius and prevent over-bending that could damage the pipe. Typically installed near critical areas such as connectors or end fittings, where excessive bending could compromise the structural integrity of the pipe. The Bend Restrictor consists of multiple interlocking segments that allow flexibility up to a certain radius, beyond which the segments lock to prevent further bending, protecting the pipe from deformation or failure in harsh subsea environments."@en ;
+                skos:prefLabel "Restritor de Curvatura"@pt-br ;
+                :ifc_equivalentClass "IfcPipeFitting" ;
+                skos:altLabel "Bend Limiter"@en ;
+                skos:altLabel "Bending Restrictor"@en ;
+                skos:altLabel "Curvature Limiter"@en .
 
+###  https://w3id.org/energy-domain/core#BendRestrictorType
+:BendRestrictorType rdf:type owl:Class ;
+                    dcterms:identifier "BendRestrictorType" ;
+                    skos:prefLabel "Bend Restrictor Type"@en ;
+                    skos:definition "Device used in subsea flexible pipes to limit the bending radius and prevent over-bending that could damage the pipe. Typically installed near critical areas such as connectors or end fittings, where excessive bending could compromise the structural integrity of the pipe. The Bend Restrictor consists of multiple interlocking segments that allow flexibility up to a certain radius, beyond which the segments lock to prevent further bending, protecting the pipe from deformation or failure in harsh subsea environments."@en ;
+                    skos:prefLabel "Tipo de Restritor de Curvatura"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeFittingType" ;
+                    skos:altLabel "Bend Limiter"@en ;
+                    skos:altLabel "Bending Restrictor"@en ;
+                    skos:altLabel "Curvature Limiter"@en ;
+                    skos:altLabel "Flex Restrictor"@en ;
+                    :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#BendStiffener
 :BendStiffener rdf:type owl:Class ;
-               rdfs:subClassOf :LineAncillary .
+               rdfs:subClassOf :LineAncillary ;
+               dcterms:identifier "BendStiffener" ;
+               skos:prefLabel "Bend Stiffener"@en ;
+               skos:definition "Device used in subsea flexible pipes to provide gradual stiffness transition between the flexible pipe and a fixed structure, preventing excessive bending at critical areas such as terminations or connectors. The Bend Stiffener is designed to manage stress concentration by stiffening the pipe over a defined length, reducing the risk of damage due20to repeated bending, fatigue, or over-flexing. Typically made from high-strength materials, it ensures the long-term structural integrity of the pipe in dynamic subsea environments."@en ;
+               skos:prefLabel "Enrijecedor de Curvatura"@pt-br .
 
+###  https://w3id.org/energy-domain/core#BendStiffenerType
+:BendStiffenerType rdf:type owl:Class ;
+                   dcterms:identifier "BendStiffenerType" ;
+                   skos:prefLabel "Bend Stiffener Type"@en ;
+                   skos:definition "Device used in subsea flexible pipes to provide gradual stiffness transition between the flexible pipe and a fixed structure, preventing excessive bending at critical areas such as terminations or connectors. The Bend Stiffener is designed to manage stress concentration by stiffening the pipe over a defined length, reducing the risk of damage due to repeated bending, fatigue, or over-flexing. Typically made from high-strength materials, it ensures the long-term structural integrity of the pipe in dynamic subsea environments."@en ;
+                   skos:prefLabel "Tipo de Enrijecedor de Curvatura"@pt-br ;
+                   :ifc_equivalentClass "IfcPipeFittingType" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#BoltSet
 :BoltSet rdf:type owl:Class ;
-         rdfs:subClassOf :PhysicalConnection .
-
+         rdfs:subClassOf :PhysicalConnection ;
+         dcterms:identifier "BoltSet" ;
+         skos:prefLabel "Bolt Set"@en ;
+         skos:definition "A collection of bolts and nuts, and washers designed for fastening components in subsea systems. Bolt sets are critical for ensuring structural integrity and are selected based on size, material, and application requirements."@en ;
+         skos:prefLabel "Conjunto de Parafusos"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#BuoyancyModule
 :BuoyancyModule rdf:type owl:Class ;
-                rdfs:subClassOf :LineAncillary .
+                rdfs:subClassOf :LineAncillary ;
+                dcterms:identifier "BuoyancyModule" ;
+                skos:prefLabel "Buoyancy Module"@en ;
+                skos:definition "Device used in subsea systems to provide controlled buoyancy to flexible pipes, risers, or umbilicals, reducing the load on the structure and managing the configuration of the line in the water column. The Buoyancy Module is typically composed of syntactic foam or other materials with low density, designed to withstand high external pressures while maintaining its buoyant properties over time. It plays a key role in optimizing the performance and positioning of subsea lines, ensuring they maintain the required shape and depth in dynamic ocean conditions."@en ;
+                skos:prefLabel "Módulo de Flutuação"@pt-br ;
+                :ifc_equivalentClass "IfcPipeFitting" ;
+                skos:altLabel "Buoyancy Element"@en ;
+                skos:altLabel "Floatation Module"@en ;
+                skos:altLabel "Buoyancy Unit"@en ;
+                skos:altLabel "Subsea Buoyancy Module"@en .
 
+###  https://w3id.org/energy-domain/core#BuoyancyModuleType
+:BuoyancyModuleType rdf:type owl:Class ;
+                    dcterms:identifier "BuoyancyModuleType" ;
+                    skos:prefLabel "Buoyancy Module Type"@en ;
+                    skos:definition "Device used in subsea systems to provide controlled buoyancy to flexible pipes, risers, or umbilicals, reducing the load on the structure and managing the configuration of the line in the water column. The Buoyancy Module is typically composed of syntactic foam or other materials with low density, designed to withstand high external pressures while maintaining its buoyant properties over time. It plays a key role in optimizing the performance and positioning of subsea lines, ensuring they maintain the required shape and depth in dynamic ocean conditions."@en ;
+                    skos:prefLabel "Tipo de Módulo de Flutuação"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeFittingType" ;
+                    skos:altLabel "Buoyancy Element"@en ;
+                    skos:altLabel "Floatation Module"@en ;
+                    skos:altLabel "Buoyancy Unit"@en ;
+                    skos:altLabel "Subsea Buoyancy Device"@en ;
+                    :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#CarcassLayer
 :CarcassLayer rdf:type owl:Class ;
-              rdfs:subClassOf :ArmourLayer .
-
+              rdfs:subClassOf :ArmourLayer ;
+              dcterms:identifier "CarcassLayer" ;
+              skos:prefLabel "Carcass Layer"@en ;
+              skos:definition " A reinforcement layer in subsea flexible pipes that provides structural strength and stability. It helps maintain the shape and integrity of the pipe under operational pressure, ensuring the flexibility of the pipe while protecting the internal components. Typically made from metal or polymer materials, it acts as a foundation for the other protective layers."@en ;
+              skos:prefLabel "Camada de Carcaça"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#CompactObject
 :CompactObject rdf:type owl:Class ;
                rdfs:subClassOf :Asset ;
-               rdfs:label "Compact Object"@en .
+               rdfs:label "Compact Object"@en ;
+               dcterms:identifier "CompactObject" ;
+               skos:prefLabel "Compact Object"@en ;
+               skos:definition "A mobile physical object, usually manufactured in a standardized manner."@en ;
+               skos:prefLabel "Objeto Compacto"@pt-br .
 
+###  https://w3id.org/energy-domain/core#CompactObjectType
+:CompactObjectType rdf:type owl:Class ;
+                   dcterms:identifier "CompactObjectType" ;
+                   skos:prefLabel "Compact Object Type"@en ;
+                   skos:definition "A mobile physical object, usually manufactured in a standardized manner."@en ;
+                   skos:prefLabel "Tipo de Objeto Compacto"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#Component
 :Component rdf:type owl:Class ;
-           rdfs:subClassOf :CompactObject .
+           rdfs:subClassOf :CompactObject ;
+           dcterms:identifier "Component" ;
+           skos:prefLabel "Component"@en ;
+           skos:definition "Items always found as part of larger objects, with varying levels of complexity."@en ;
+           skos:prefLabel "Componente"@pt-br .
 
+###  https://w3id.org/energy-domain/core#ComponentType
+:ComponentType rdf:type owl:Class ;
+               dcterms:identifier "ComponentType" ;
+               skos:prefLabel "Component Type"@en ;
+               skos:definition "Items always found as part of larger objects, with varying levels of complexity."@en ;
+               skos:prefLabel "Tipo de Componente"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#CompositeMaterial
 :CompositeMaterial rdf:type owl:Class ;
-                   rdfs:subClassOf :FlexibleStructureLayerMaterial .
-
+                   rdfs:subClassOf :FlexibleStructureLayerMaterial ;
+                   dcterms:identifier "CompositeMaterial" ;
+                   skos:prefLabel "Composite Material"@en ;
+                   skos:definition "Material made from two or more distinct components, typically reinforcing fibers and a matrix, used in the construction of layers in flexible pipes for subsea applications. The Composite Material offers a combination of high strength, corrosion resistance, and flexibility, making it suitable for withstanding the harsh conditions of deepwater environments. Its use in flexible pipe layers enhances the pipe's structural integrity, resistance to external pressure, and durability under cyclical loading, while also reducing weight compared to traditional metallic materials."@en ;
+                   skos:prefLabel "Material Compósito"@pt-br ;
+                   :ifc_equivalentClass "IfcMaterial" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#Connection
 :Connection rdf:type owl:Class ;
-            rdfs:subClassOf :DomainObject .
-
+            rdfs:subClassOf :DomainObject ;
+            dcterms:identifier "Connection" ;
+            skos:prefLabel "Connection"@en ;
+            skos:definition "The joining point between two components, enabling fluid, gas, or structural continuity. Connections are designed to ensure secure, leak-free operation in harsh subsea environments."@en ;
+            skos:prefLabel "Conexão"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#DeadweightCollar
 :DeadweightCollar rdf:type owl:Class ;
-                  rdfs:subClassOf :SplitCollar .
+                  rdfs:subClassOf :SplitCollar ;
+                  dcterms:identifier "DeadweightCollar" ;
+                  skos:prefLabel "Deadweight Collar"@en ;
+                  skos:definition "Component used in subsea systems to provide additional weight to flexible pipes, risers, or umbilicals, ensuring proper stability and positioning on the seabed. The Deadweight Collar is designed to counteract buoyant forces, preventing unwanted movement of the pipe due to ocean currents or other environmental factors. Typically made from dense materials, it plays a crucial role in maintaining the alignment and stability of lines in dynamic environments, ensuring that the system remains securely anchored."@en ;
+                  skos:prefLabel "Colar de Peso Morto"@pt-br ;
+                  :ifc_equivalentClass "IfcPipeFitting" ;
+                  skos:altLabel "Weight Collar"@en ;
+                  skos:altLabel "Sinking Collar"@en ;
+                  skos:altLabel "Ballast Collar"@en ;
+                  skos:altLabel "Dead Weight Clamp"@en .
 
+###  https://w3id.org/energy-domain/core#DeadweightCollarType
+:DeadweightCollarType rdf:type owl:Class ;
+                      dcterms:identifier "DeadweightCollarType" ;
+                      skos:prefLabel "Deadweight Collar Type"@en ;
+                      skos:definition "Component used in subsea systems to provide additional weight to flexible pipes, risers, or umbilicals, ensuring proper stability and positioning on the seabed. The Deadweight Collar is designed to counteract buoyant forces, preventing unwanted movement of the pipe due to ocean currents or other environmental factors. Typically made from dense materials, it plays a crucial role in maintaining the alignment and stability of lines in dynamic environments, ensuring that the system remains securely anchored."@en ;
+                      skos:prefLabel "Tipo de Colar de Peso Morto"@pt-br ;
+                      :ifc_equivalentClass "IfcPipeFittingType" ;
+                      skos:altLabel "Weight Collar"@en ;
+                      skos:altLabel "Sinking Collar"@en ;
+                      skos:altLabel "Ballast Collar"@en ;
+                      skos:altLabel "Dead Weight Clamp"@en ;
+                      :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#DistributionConnectionPoint
 :DistributionConnectionPoint rdf:type owl:Class ;
-                             rdfs:subClassOf :LogicalConnection .
-
-
-###  https://w3id.org/energy-domain/core#DomainAttribute
-:DomainAttribute rdf:type owl:Class .
-
-
-###  https://w3id.org/energy-domain/core#DomainAuxiliarProperty
-:DomainAuxiliarProperty rdf:type owl:Class .
-
-
-###  https://w3id.org/energy-domain/core#DomainObject
-:DomainObject rdf:type owl:Class .
-
-
-###  https://w3id.org/energy-domain/core#DomainRelationship
-:DomainRelationship rdf:type owl:Class .
-
+                            rdfs:subClassOf :LogicalConnection ;
+                            dcterms:identifier "DistributionConnectionPoint" ;
+                            skos:prefLabel "Distribution Connection Point"@en ;
+                            skos:definition "Location in a model that indicates the specific point where fluid distribution components are connected. The Distribution Connection Point provides precise information for the assembly and installation of these components, ensuring proper alignment and functionality within the system. This point is critical for defining the interface between fluid distribution elements in subsea or other fluid-handling systems."@en ;
+                            skos:prefLabel "Ponto de Conexão de Distribuição"@pt-br ;
+                            :ifc_equivalentClass "IfcDistributionPort" ;
+                            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#EquipmentLocation
 :EquipmentLocation rdf:type owl:Class ;
-                   rdfs:subClassOf :PointLocation .
-
+                   rdfs:subClassOf :PointLocation ;
+                   dcterms:identifier "EquipmentLocation" ;
+                   skos:prefLabel "Equipment Location"@en ;
+                   skos:definition "Base for installation sites for large underwater equipment."@en ;
+                   skos:prefLabel "Localização de Equipamento"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#FabricTape
 :FabricTape rdf:type owl:Class ;
-            rdfs:subClassOf :TapeLayer .
-
+            rdfs:subClassOf :TapeLayer ;
+            dcterms:identifier "FabricTape" ;
+            skos:prefLabel "Fabric Tape"@en ;
+            skos:definition "Material used in subsea flexible pipe construction, typically applied as a wrapping layer to provide protection and containment for internal components. Fabric Tape is designed to secure and hold various layers of the pipe in place during manufacturing and operation, preventing displacement or damage to the underlying layers. It also adds a layer of abrasion resistance, contributing to the overall durability of the pipe in dynamic subsea environments. Made from high-strength, flexible materials, Fabric Tape plays a key role in maintaining the integrity of the flexible pipe structure."@en ;
+            skos:prefLabel "Fita Construtiva"@pt-br ;
+            :ifc_equivalentClass "IfcPipeSegment" ;
+            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#FlexiblePipeSegment
 :FlexiblePipeSegment rdf:type owl:Class ;
-                     rdfs:subClassOf :PipeSegment .
-
+                     rdfs:subClassOf :PipeSegment ;
+                     dcterms:identifier "FlexiblePipeSegment" ;
+                     skos:prefLabel "Flexible Pipe Segment"@en ;
+                     skos:definition "A segment of a flexible pipe that forms part of the overall pipeline system. The Flexible Pipe Segment is designed to transport fluids or gases over varying distances and conditions on the seafloor. Each section is engineered to handle specific environmental and operational requirements, contributing to the flexibility, durability, and performance of the subsea pipeline system."@en ;
+                     skos:prefLabel "Tramo de Duto Flexível"@pt-br ;
+                     :ifc_equivalentClass "IfcPipeSegment" ;
+                     skos:altLabel "Flexible Pipe Segment"@en ;
+                     skos:altLabel "Flexible Pipe Section"@en ;
+                     skos:altLabel "Subsea Pipe Segment"@en ;
+                     skos:altLabel "Flexible Line Section"@en .
 
 ###  https://w3id.org/energy-domain/core#FlexiblePipeStructure
 :FlexiblePipeStructure rdf:type owl:Class ;
-                       rdfs:subClassOf :DomainObject .
-
+                       rdfs:subClassOf :DomainObject ;
+                       dcterms:identifier "FlexiblePipeStructure" ;
+                       skos:prefLabel "Flexible Pipe Structure"@en ;
+                       skos:definition "The Flexible Pipe Structure is the layered configuration of a flexible pipe, designed to provide flexibility and strength in subsea environments. It consists of multiple layers, each serving a specific function, such as pressure containment, protection, or reinforcement. This structure is engineered to handle the demands of deepwater conditions, including high pressure and dynamic movements, ensuring the pipe's integrity and performance."@en ;
+                       skos:prefLabel "Estrutura de Duto Flexível"@pt-br ;
+                       :ifc_equivalentClass "IfcPipeSegmentType" ;
+                       skos:altLabel "Flexible Structure"@en ;
+                       skos:altLabel "Subsea Flexible Design"@en ;
+                       skos:altLabel "Subsea Flexible Configuration"@en ;
+                       :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#FlexibleStructureLayer
 :FlexibleStructureLayer rdf:type owl:Class ;
-                        rdfs:subClassOf :DomainObject .
-
+                        rdfs:subClassOf :DomainObject ;
+                        dcterms:identifier "FlexibleStructureLayer" ;
+                        skos:prefLabel "Flexible Structure Layer"@en ;
+                        skos:definition "A specific layer within the structure of a subsea flexible pipe, each designed to fulfill a distinct function. These layers work together to provide essential properties such as pressure containment, reinforcement, and environmental protection. Engineered to withstand harsh underwater conditions, each layer contributes to the overall flexibility, durability, and performance of the subsea flexible pipe system."@en ;
+                        skos:prefLabel "Camadas de Estruturas Flexíveis"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#FlexibleStructureLayerMaterial
 :FlexibleStructureLayerMaterial rdf:type owl:Class ;
-                                rdfs:subClassOf :DomainObject .
-
+                                rdfs:subClassOf :DomainObject ;
+                                dcterms:identifier "FlexibleStructureLayerMaterial" ;
+                                skos:prefLabel "Flexible Structure Layer Material"@en ;
+                                skos:definition "Material used to fabricate the individual layers of a subsea flexible structure, each layer serving a distinct function such as pressure containment, tensile reinforcement, or external protection. The Flexible Structure Layer Material is selected based on its specific properties, such as strength, flexibility, corrosion resistance, or thermal insulation, to ensure the overall performance and durability of the flexible pipe in harsh subsea conditions. These materials may include polymers, metals, composites, or other high-performance substances tailored to the pipe's operational demands."@en ;
+                                skos:prefLabel "Materiais de Camadas de Estruturas Flexíveis Submarinas"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#FloatingProductionUnit
 :FloatingProductionUnit rdf:type owl:Class ;
-                        rdfs:subClassOf :Location .
-
+                        rdfs:subClassOf :Location ;
+                        dcterms:identifier "FloatingProductionUnit" ;
+                        skos:prefLabel "Floating Production Unit"@en ;
+                        skos:definition "Offshore platform used in oil and gas exploration and production, designed to extract, process, and store hydrocarbons. The Floating Production Unit (FPU) is anchored or moored to the seabed and can operate in deep waters, often connected to subsea wells via flexible pipes and umbilicals. It accommodates processing equipment for separating oil, gas, and water, as well as facilities for temporary storage or transfer of processed hydrocarbons to tankers or pipelines. FPUs are essential for the efficient and safe production of oil and gas in challenging offshore environments."@en ;
+                        skos:prefLabel "Unidade de Produção Flutuante (UEP)"@pt-br ;
+                        :ifc_equivalentClass "IfcBuilding" ;
+                        skos:altLabel "FPSO"@en ;
+                        skos:altLabel "FLNG"@en ;
+                        skos:altLabel "FPU"@en ;
+                        skos:altLabel "Floating Platform"@en ;
+                        skos:altLabel "Floating Production Facility"@en .
 
 ###  https://w3id.org/energy-domain/core#HandlingCollar
 :HandlingCollar rdf:type owl:Class ;
-                rdfs:subClassOf :SplitCollar .
-
+                rdfs:subClassOf :SplitCollar ;
+                dcterms:identifier "HandlingCollar" ;
+                skos:prefLabel "Handling Collar"@en ;
+                skos:definition "Device used in subsea operations to facilitate the safe handling, lifting, and maneuvering of flexible pipes or heavy components during installation or retrieval. Typically attached around the pipe or component, it provides secure lifting points for cranes or other lifting equipment. Designed to distribute the load evenly, it prevents damage to the pipe or equipment while ensuring efficient and controlled movements in subsea environments."@en ;
+                skos:prefLabel "Colar de Manuseio"@pt-br ;
+                :ifc_equivalentClass "IfcPipeFitting" ;
+                skos:altLabel "Handling Clamp"@en ;
+                skos:altLabel "Lifting Collar"@en ;
+                skos:altLabel "Support Collar"@en ;
+                skos:altLabel "Installation Collar"@en .
 
 ###  https://w3id.org/energy-domain/core#HangOffCollar
 :HangOffCollar rdf:type owl:Class ;
-               rdfs:subClassOf :LineAncillary .
-
+               rdfs:subClassOf :LineAncillary ;
+               dcterms:identifier "HangOffCollar" ;
+               skos:prefLabel "Hang Off Collar"@en ;
+               skos:definition "Device used to secure and support flexible pipes or risers during installation, particularly when they are suspended from a platform or vessel. It provides a stable attachment point, distributing the load and preventing excessive movement or strain on the pipe. The Hang Off Collar is crucial for maintaining the integrity of the pipe while it is held in place before final connection or during temporary suspension in subsea operations."@en ;
+               skos:prefLabel "Sistema de Suspensão"@pt-br ;
+               :ifc_equivalentClass "IfcPipeFitting" ;
+               skos:altLabel "Hang-Off Clamp"@en ;
+               skos:altLabel "Hang-Off Device"@en ;
+               skos:altLabel "Support Collar"@en ;
+               skos:altLabel "Termination Collar"@en .
 
 ###  https://w3id.org/energy-domain/core#HardwareItem
 :HardwareItem rdf:type owl:Class ;
-              rdfs:subClassOf :Component .
-
+              rdfs:subClassOf :Component ;
+              dcterms:identifier "HardwareItem" ;
+              skos:prefLabel "Hardware Item"@en ;
+              skos:definition "Simple mechanical items such as hardware, fasteners, seals, etc."@en ;
+              skos:prefLabel "Item de Hardware"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#HighStrengthTape
 :HighStrengthTape rdf:type owl:Class ;
-                  rdfs:subClassOf :TapeLayer .
-
+                  rdfs:subClassOf :TapeLayer ;
+                  dcterms:identifier "HighStrengthTape" ;
+                  skos:prefLabel "High Strength Tape"@en ;
+                  skos:definition "Material used in subsea flexible pipes, typically applied as a reinforcing layer to provide additional strength and resistance to external forces. High Strength Tape is designed to improve the tensile properties of the flexible pipe, enhancing its ability to withstand high internal pressures, tension, and dynamic loads in harsh subsea environments. It is typically made from advanced fibers or composite materials, ensuring durability and long-term performance in demanding conditions."@en ;
+                  skos:prefLabel "Fita de Alta Resistência"@pt-br ;
+                  :ifc_equivalentClass "IfcPipeSegment" ;
+                  :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#HoldingBandage
 :HoldingBandage rdf:type owl:Class ;
-                rdfs:subClassOf :TapeLayer .
-
+                rdfs:subClassOf :TapeLayer ;
+                dcterms:identifier "HoldingBandage" ;
+                skos:prefLabel "Holding Bandage"@en ;
+                skos:definition "Reinforcement layer used in subsea flexible pipes to secure and hold internal components in place during manufacturing and operation. The Holding Bandage helps maintain the alignment and stability of the various layers of the pipe, preventing displacement or movement under dynamic conditions. Typically made from high-strength, flexible materials, it contributes to the overall durability and structural integrity of the pipe, ensuring reliable performance in harsh subsea environments."@en ;
+                skos:prefLabel "Bandagem de Reforço"@pt-br ;
+                :ifc_equivalentClass "IfcPipeSegment" ;
+                :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#InnerTube
 :InnerTube rdf:type owl:Class ;
-           rdfs:subClassOf :SolidLayer .
-
+           rdfs:subClassOf :SolidLayer ;
+           dcterms:identifier "InnerTube" ;
+           skos:prefLabel "Inner Tube"@en ;
+           skos:definition "The Inner Tube is the innermost layer of a subsea flexible pipe, responsible for containing and transporting the fluid, such as oil or gas. It is designed to withstand internal pressures and prevent fluid leakage while offering resistance to the corrosive and abrasive nature of the transported substances. The Inner Tube is typically made from high-performance polymeric materials that ensure durability, flexibility, and chemical resistance, making it a critical component in maintaining the integrity of the flexible pipe in subsea operations."@en ;
+           skos:prefLabel "Tubo Interno"@pt-br ;
+           :ifc_equivalentClass "IfcPipeSegment" ;
+           :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#InsulationTape
 :InsulationTape rdf:type owl:Class ;
-                rdfs:subClassOf :TapeLayer .
-
+                rdfs:subClassOf :TapeLayer ;
+                dcterms:identifier "InsulationTape" ;
+                skos:prefLabel "Insulation Tape"@en ;
+                skos:definition "Material used in subsea flexible pipes to provide thermal insulation, ensuring that the temperature of the transported fluids remains stable during flow. Insulation Tape is applied in layers around the pipe to minimize heat loss or gain, which is critical for maintaining the fluid's properties, such as viscosity, in deepwater environments. It is typically made from materials with low thermal conductivity, such as polymers or composites, and is essential for enhancing the efficiency and performance of subsea pipelines in harsh temperature conditions."@en ;
+                skos:prefLabel "Fita de Isolamento"@pt-br ;
+                :ifc_equivalentClass "IfcPipeSegment" ;
+                :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#Interconnection
 :Interconnection rdf:type owl:Class ;
-                 rdfs:subClassOf :LinearLocation .
-
+                 rdfs:subClassOf :LinearLocation ;
+                 dcterms:identifier "Interconnection" ;
+                 skos:prefLabel "Interconnection"@en ;
+                 skos:definition "Location that contains the entire length of an interconnection, with its various sections, terminations, inline equipment, etc."@en ;
+                 skos:prefLabel "Interligação"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#InterlockedCarcass
 :InterlockedCarcass rdf:type owl:Class ;
-                    rdfs:subClassOf :CarcassLayer .
-
+                    rdfs:subClassOf :CarcassLayer ;
+                    dcterms:identifier "InterlockedCarcass" ;
+                    skos:prefLabel "Interlocked Carcass"@en ;
+                    skos:definition "The Interlocked Carcass is a metallic layer used in certain subsea flexible pipes to provide internal pressure resistance and prevent collapse. It is designed with interlocking metal strips that offer high strength while maintaining flexibility. This layer enhances the structural integrity of the flexible pipe, protecting it from external pressures and harsh subsea conditions. The Interlocked Carcass allows the pipe to bend without losing its shape or collapsing under deepwater pressure."@en ;
+                    skos:prefLabel "Carcaça"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeSegment" ;
+                    :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#IntermediateBendStiffener
 :IntermediateBendStiffener rdf:type owl:Class ;
-                           rdfs:subClassOf :BendStiffener .
-
+                           rdfs:subClassOf :BendStiffener ;
+                           dcterms:identifier "IntermediateBendStiffener" ;
+                           skos:prefLabel "Intermediate Bend Stiffener"@en ;
+                           skos:definition "A device used in subsea flexible pipes to provide localized stiffness at specific points along the length of the pipe, preventing excessive bending and reducing stress concentration. The Intermediate Bend Stiffener is typically installed between critical areas to ensure that the pipe maintains a controlled bending radius, protecting it from over-flexing or fatigue. Made from durable materials, it helps prolong the service life of the flexible pipe by distributing loads more evenly and reducing the risk of damage in dynamic subsea environments."@en ;
+                           skos:prefLabel "Enrijecedor de Curvatura Intermediário"@pt-br ;
+                           :ifc_equivalentClass "IfcPipeFitting" ;
+                           skos:altLabel "Intermediate Bending Stiffener"@en ;
+                           skos:altLabel "Stiffener"@en ;
+                           skos:altLabel "Curvature Stiffener"@en .
 
 ###  https://w3id.org/energy-domain/core#IntermediateSheath
 :IntermediateSheath rdf:type owl:Class ;
-                    rdfs:subClassOf :SolidLayer .
-
+                    rdfs:subClassOf :SolidLayer ;
+                    dcterms:identifier "IntermediateSheath" ;
+                    skos:prefLabel "Intermediate Sheath"@en ;
+                    skos:definition "A protective layer within a subsea flexible pipe, positioned between other structural layers to provide additional protection and separation. The Intermediate Sheath serves to isolate different layers, preventing abrasion, wear, or interaction that could compromise the integrity of the pipe. Typically made from polymeric materials, this sheath also contributes to the overall durability and flexibility of the pipe, ensuring it can withstand the dynamic conditions of subsea environments while maintaining the performance of the internal and external layers."@en ;
+                    skos:prefLabel "Barreira Intermediária de Vedação"@pt-br ;
+                    :ifc_equivalentClass "IfcPipeSegment" ;
+                    :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#InternalPressureSheath
 :InternalPressureSheath rdf:type owl:Class ;
-                        rdfs:subClassOf :SolidLayer .
-
+                        rdfs:subClassOf :SolidLayer ;
+                        dcterms:identifier "InternalPressureSheath" ;
+                        skos:prefLabel "Internal Pressure Sheath"@en ;
+                        skos:definition "A layer within a subsea flexible pipe designed to contain the internal fluid and withstand the internal pressure exerted by the transported medium, such as oil, gas, or water. The Internal Pressure Sheath plays a crucial role in preventing fluid leakage and maintaining pressure integrity within the pipe. Typically made from high-performance polymeric materials, it ensures the safe transport of fluids under high-pressure conditions, contributing to the pipe's overall structural stability and long-term reliability in harsh subsea environments."@en ;
+                        skos:prefLabel "Barreira Interna de Pressão"@pt-br ;
+                        :ifc_equivalentClass "IfcPipeSegment" ;
+                        :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#LineAncillary
 :LineAncillary rdf:type owl:Class ;
-               rdfs:subClassOf :HardwareItem .
-
+               rdfs:subClassOf :HardwareItem ;
+               dcterms:identifier "LineAncillary" ;
+               skos:prefLabel "Line Ancillary"@en ;
+               skos:definition "A component designed to complement and enhance the functionality of subsea flexible pipes. Line Ancillaries include a variety of parts such as connectors, clamps, or collars that facilitate the installation, operation, and maintenance of flexible pipes used in subsea systems. These ancillaries ensure proper alignment, secure connections, and protection against environmental factors, contributing to the reliable performance and integrity of the flexible pipe system in harsh underwater conditions."@en ;
+               skos:prefLabel "Acessório de Linha"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#LinearLocation
 :LinearLocation rdf:type owl:Class ;
-                rdfs:subClassOf :Location .
-
+                rdfs:subClassOf :Location ;
+                dcterms:identifier "LinearLocation" ;
+                skos:prefLabel "Linear Location"@en ;
+                skos:definition "Base for locations that extend along a geographically significant route."@en ;
+                skos:prefLabel "Localização Linear"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#LinearObject
 :LinearObject rdf:type owl:Class ;
-              rdfs:subClassOf :Asset .
-
-
-###  https://w3id.org/energy-domain/core#Location
-:Location rdf:type owl:Class ;
-          rdfs:subClassOf :DomainObject .
-
+              rdfs:subClassOf :Asset ;
+              dcterms:identifier "LinearObject" ;
+              skos:prefLabel "Linear Object"@en ;
+              skos:definition "Base for any type of interconnecting element with linear geometry."@en ;
+              skos:prefLabel "Objeto Linear"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#LogicalConnection
 :LogicalConnection rdf:type owl:Class ;
-                   rdfs:subClassOf :Connection .
-
+                   rdfs:subClassOf :Connection ;
+                   dcterms:identifier "LogicalConnection" ;
+                   skos:prefLabel "Logical Connection"@en ;
+                   skos:definition "Represents a logical/functional connection between two installation locations."@en ;
+                   skos:prefLabel "Conexão Lógica"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#LowResistanceTape
 :LowResistanceTape rdf:type owl:Class ;
-                   rdfs:subClassOf :TapeLayer .
-
+                   rdfs:subClassOf :TapeLayer ;
+                   dcterms:identifier "LowResistanceTape" ;
+                   skos:prefLabel "Low Resistance Tape"@en ;
+                   skos:definition "A layer used in subsea flexible pipes to reduce friction between different components or layers, enhancing the overall flexibility and durability of the pipe. The Low Resistance Tape minimizes wear and abrasion caused by the movement of adjacent layers during operation, particularly in dynamic subsea conditions. Made from materials with low friction properties, it helps extend the lifespan of the pipe by reducing internal stresses and preventing damage to critical layers, ensuring smooth and efficient operation under harsh underwater conditions."@en ;
+                   skos:prefLabel "Fita de Baixa Resistência"@pt-br ;
+                   :ifc_equivalentClass "IfcPipeSegment" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#MetallicMaterial
 :MetallicMaterial rdf:type owl:Class ;
-                  rdfs:subClassOf :FlexibleStructureLayerMaterial .
-
+                  rdfs:subClassOf :FlexibleStructureLayerMaterial ;
+                  dcterms:identifier "MetallicMaterial" ;
+                  skos:prefLabel "Metallic Material"@en ;
+                  skos:definition "Material used in the fabrication of metallic layers in subsea flexible pipes, chosen for its strength, durability, and resistance to harsh environmental conditions. The Metallic Material provides structural reinforcement, enhances pressure resistance, and supports the pipe's overall integrity. Commonly used materials include stainless steel, carbon steel, or other corrosion-resistant alloys, which are selected based on their ability to withstand the operational demands of deepwater environments, such as high pressure, tension, and dynamic loading."@en ;
+                  skos:prefLabel "Material Metálico"@pt-br ;
+                  :ifc_equivalentClass "IfcMaterial" ;
+                  :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#MetallicStrandSet
 :MetallicStrandSet rdf:type owl:Class ;
-                   rdfs:subClassOf :PhysicalConnection .
-
+                   rdfs:subClassOf :PhysicalConnection ;
+                   dcterms:identifier "MetallicStrandSet" ;
+                   skos:prefLabel "Metallic Strand Set"@en ;
+                   skos:definition "Galvanic connection cables set providing reliable electrical link between anodes and metal infrastructure for effective corrosion mitigation."@en ;
+                   skos:prefLabel "Conjunto de Cordoalhas de Continuidade"@pt-br ;
+                   :ifc_equivalentClass "IfcCableSegment" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#MetricBoltSet
 :MetricBoltSet rdf:type owl:Class ;
-               rdfs:subClassOf :BoltSet .
-
+               rdfs:subClassOf :BoltSet ;
+               dcterms:identifier "MetricBoltSet" ;
+               skos:prefLabel "Metric Bolt Set"@en ;
+               skos:definition "A set of bolts and accompanying hardware sized using the metric measurement system, commonly used in subsea applications for international compatibility and standardization."@en ;
+               skos:prefLabel "Conjunto de Parafusos Métrico"@pt-br ;
+               :ifc_equivalentClass "IfcMechanicalFastener" ;
+               :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#MetricStudSet
 :MetricStudSet rdf:type owl:Class ;
-               rdfs:subClassOf :StudSet .
-
+               rdfs:subClassOf :StudSet ;
+               dcterms:identifier "MetricStudSet" ;
+               skos:prefLabel "Metric Stud Set"@en ;
+               skos:definition "Metric studs are crucial fastening components for subsea oil and gas components, designed specifically to secure equipment parts. Each set includes bolts, nuts, and washers in metric sizing, made from high-strength, corrosion-resistant materials to withstand the demanding subsea environment. These components offer dependable fastening, ensuring structural integrity and leak prevention in end fittings. Metric stud sets are engineered to endure high pressure and extreme temperatures, making them essential for the safety and durability of subsea interconnections."@en ;
+               skos:prefLabel "Conjunto de Estojos Métrico"@pt-br ;
+               skos:altLabel "Metric Stud"@en ;
+               skos:altLabel "Metric Threaded Rod"@en ;
+               :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#ModelLocationPoint
 :ModelLocationPoint rdf:type owl:Class ;
-                    rdfs:subClassOf :DomainObject .
-
+                    rdfs:subClassOf :DomainObject ;
+                    dcterms:identifier "ModelLocationPoint" ;
+                    skos:prefLabel "Model Location Point"@en ;
+                    skos:definition "A specific reference point or coordinate used to define the precise location of equipment, infrastructure, or components within a 3D model."@en ;
+                    skos:prefLabel "Ponto de Localização no Modelo"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#PhysicalConnection
 :PhysicalConnection rdf:type owl:Class ;
-                    rdfs:subClassOf :Connection .
-
+                    rdfs:subClassOf :Connection ;
+                    dcterms:identifier "PhysicalConnection" ;
+                    skos:prefLabel "Physical Connection"@en ;
+                    skos:definition "A Physical Connection refers to the actual link or interface between two or more components, such as pipes, equipment, or systems, that allows for the transfer of fluids, energy, or data."@en ;
+                    skos:prefLabel "Conexão Física"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#PipePullingHead
 :PipePullingHead rdf:type owl:Class ;
-                 rdfs:subClassOf :PullingHead .
-
+                 rdfs:subClassOf :PullingHead ;
+                 dcterms:identifier "PipePullingHead" ;
+                 skos:prefLabel "Pipe Pulling Head"@en ;
+                 skos:definition "A component used in subsea flexible pipe installations to provide a secure attachment point for pulling the pipe into position during installation or retrieval operations. The Pulling Head is fitted to the end of the flexible pipe, allowing connection to pulling equipment such as winches or cranes. It is designed to withstand high loads, ensuring that the pipe can be pulled safely without causing damage. The Pulling Head is essential for handling, testing, and securing the pipe in place during subsea installation."@en ;
+                 skos:prefLabel "Cabeça de Tração do Duto"@pt-br ;
+                 :ifc_equivalentClass "IfcPipeFitting" ;
+                 skos:altLabel "Pull Head"@en ;
+                 skos:altLabel "Pulling Tool"@en ;
+                 skos:altLabel "Cable Head"@en ;
+                 skos:altLabel "Pulling Grip"@en ;
+                 skos:altLabel "Installation Head"@en .
 
 ###  https://w3id.org/energy-domain/core#PipeSegment
 :PipeSegment rdf:type owl:Class ;
-             rdfs:subClassOf :TransportLineSegment .
-
+             rdfs:subClassOf :TransportLineSegment ;
+             dcterms:identifier "PipeSegment" ;
+             skos:prefLabel "Pipe Segment"@en ;
+             skos:definition "Pipeline segment for movement/flow of fluids."@en ;
+             skos:prefLabel "Segmento de Duto"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#PointLocation
 :PointLocation rdf:type owl:Class ;
-               rdfs:subClassOf :Location .
-
+               rdfs:subClassOf :Location ;
+               dcterms:identifier "PointLocation" ;
+               skos:prefLabel "Point Location"@en ;
+               skos:definition "Basis for all locations that can conventionally be situated at a single geographic point."@en ;
+               skos:prefLabel "Localização de Ponto"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#PolymericMaterial
 :PolymericMaterial rdf:type owl:Class ;
-                   rdfs:subClassOf :FlexibleStructureLayerMaterial .
-
+                   rdfs:subClassOf :FlexibleStructureLayerMaterial ;
+                   dcterms:identifier "PolymericMaterial" ;
+                   skos:prefLabel "Polymeric Material"@en ;
+                   skos:definition "Material made from polymers, used to fabricate flexible layers in subsea flexible pipes. Polymeric Material is selected for its properties such as flexibility, chemical resistance, and durability, making it suitable for withstanding the harsh conditions of subsea environments. These materials are commonly used in layers that provide insulation, protection, or pressure containment, ensuring the overall performance and integrity of the flexible pipe under dynamic loads and extreme underwater conditions."@en ;
+                   skos:prefLabel "Material Polimérico"@pt-br ;
+                   :ifc_equivalentClass "IfcMaterial" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#PressureArmour
 :PressureArmour rdf:type owl:Class ;
-                rdfs:subClassOf :CarcassLayer .
-
-
-###  https://w3id.org/energy-domain/core#ProtectiveSheath
-:ProtectiveSheath rdf:type owl:Class ;
-                  rdfs:subClassOf :SolidLayer .
-
+                rdfs:subClassOf :CarcassLayer ;
+                dcterms:identifier "PressureArmour" ;
+                skos:prefLabel "Pressure Armour"@en ;
+                skos:definition "A high-strength, metallic layer used in subsea flexible pipes to provide resistance against both internal and external pressure. The Pressure Armour prevents the pipe from expanding under high internal pressures and protects against collapse due to external pressure. Typically made from helically wound steel or other strong materials, it supports the pipe's structural integrity and ensures reliable operation in harsh subsea environments."@en ;
+                skos:prefLabel "Armadura de Pressão"@pt-br ;
+                :ifc_equivalentClass "IfcPipeSegment" ;
+                :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#PullInCollar
 :PullInCollar rdf:type owl:Class ;
-              rdfs:subClassOf :SplitCollar .
-
+              rdfs:subClassOf :SplitCollar ;
+              dcterms:identifier "PullInCollar" ;
+              skos:prefLabel "Pull In Collar"@en ;
+              skos:definition "A device used in subsea operations to assist in the installation of flexible pipes or risers by providing a secure attachment point for pulling the pipe into position. The Pull In Collar is typically installed around the pipe and serves as a handling point for pulling equipment during installation. It ensures a controlled and secure method of pulling the pipe into place, preventing damage to the pipe while facilitating smooth and efficient installation in subsea environments."@en ;
+              skos:prefLabel "Colar de Pull In"@pt-br ;
+              :ifc_equivalentClass "IfcPipeFitting" ;
+              skos:altLabel "Pull-In Clamp"@en ;
+              skos:altLabel "Pulling Collar"@en ;
+              skos:altLabel "Installation Collar"@en ;
+              skos:altLabel "Tension Collar"@en .
 
 ###  https://w3id.org/energy-domain/core#PullingHead
 :PullingHead rdf:type owl:Class ;
-             rdfs:subClassOf :LineAncillary .
-
+             rdfs:subClassOf :LineAncillary ;
+             dcterms:identifier "PullingHead" ;
+             skos:prefLabel "Pulling Head"@en ;
+             skos:definition "A component used in subsea flexible pipe installations to provide a secure attachment point for pulling the pipe into position during installation or retrieval operations. The Pulling Head is fitted to the end of the flexible pipe, allowing connection to pulling equipment such as winches or cranes. It is designed to withstand high loads, ensuring that the pipe can be pulled safely without causing damage. The Pulling Head is essential for handling, testing, and securing the pipe in place during subsea installation."@en ;
+             skos:prefLabel "Cabeça de Tração"@pt-br ;
+             skos:altLabel "Pulling Tool"@en ;
+             skos:altLabel "Cable Head"@en ;
+             skos:altLabel "Pulling Grip"@en ;
+             skos:altLabel "Installation Head"@en .
 
 ###  https://w3id.org/energy-domain/core#RingGasket
 :RingGasket rdf:type owl:Class ;
-            rdfs:subClassOf :PhysicalConnection .
-
+            rdfs:subClassOf :PhysicalConnection ;
+            dcterms:identifier "RingGasket" ;
+            skos:prefLabel "Ring Gasket"@en ;
+            skos:definition "The seal ring is a crucial component used in subsea oil and gas interconnection end fittings to ensure a secure and leak-proof connection between pipes or equipment. Typically made from high-performance materials such as elastomers or metals, the seal ring is designed to withstand extreme pressure, temperature, and environmental conditions found in subsea operations. It is installed within the end fitting to create a reliable seal that prevents fluid leakage and maintains the integrity of the interconnection. The seal ring’s precise design and material selection are essential for ensuring long-term durability and performance in harsh subsea environments."@en ;
+            skos:prefLabel "Junta de Conexão"@pt-br ;
+            :ifc_equivalentClass "IfcMechanicalFastener" ;
+            skos:altLabel "Gasket"@en ;
+            skos:altLabel "O-Ring"@en ;
+            skos:altLabel "Sealing Ring"@en ;
+            skos:altLabel "Packing Ring"@en ;
+            skos:altLabel "Seal Gasket"@en ;
+            skos:altLabel "Seal Ring"@en ;
+            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#RiserBalcony
 :RiserBalcony rdf:type owl:Class ;
-              rdfs:subClassOf :Location .
-
+              rdfs:subClassOf :Location ;
+              dcterms:identifier "RiserBalcony" ;
+              skos:prefLabel "Riser Balcony"@en ;
+              skos:definition "Installation location for supports and accessories on the riser balcony of the production unit."@en ;
+              skos:prefLabel "Plataforma do Riser"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#SacrificialSheath
 :SacrificialSheath rdf:type owl:Class ;
-                   rdfs:subClassOf :SolidLayer .
-
+                   rdfs:subClassOf :SolidLayer ;
+                   dcterms:identifier "SacrificialSheath" ;
+                   skos:prefLabel "Sacrificial Sheath"@en ;
+                   skos:definition "A protective layer in subsea flexible pipes designed to absorb damage from external environmental factors, such as abrasion or impact, over time. The Sacrificial Sheath is intended to wear out or degrade under harsh conditions, thereby preserving the integrity of the underlying layers and prolonging the overall lifespan of the pipe. Made from durable materials, this sheath acts as the first line of defense, allowing for the controlled degradation of the pipe's outer surface without affecting its core structural or functional performance."@en ;
+                   skos:prefLabel "Camada de Sacrifício"@pt-br ;
+                   :ifc_equivalentClass "IfcPipeSegment" ;
+                   :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#SolidLayer
 :SolidLayer rdf:type owl:Class ;
-            rdfs:subClassOf :FlexibleStructureLayer .
-
+            rdfs:subClassOf :FlexibleStructureLayer ;
+            dcterms:identifier "SolidLayer" ;
+            skos:prefLabel "Solid Layer"@en ;
+            skos:definition "Continuous layer used in subsea flexible pipes or similar structures, typically fabricated through extrusion. It provides structural reinforcement, pressure containment, or environmental protection, ensuring the integrity and performance of the pipe by offering consistent support or shielding."@en ;
+            skos:prefLabel "Camada Sólida"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#SplitCollar
 :SplitCollar rdf:type owl:Class ;
-             rdfs:subClassOf :LineAncillary .
-
+             rdfs:subClassOf :LineAncillary ;
+             dcterms:identifier "SplitCollar" ;
+             skos:prefLabel "Split Collar"@en ;
+             skos:definition "A component used to encircle and secure parts of subsea systems, such as flexible pipes, risers, or accessories. The Split Collar is designed with a split or gap, allowing it to be clamped around the pipe or component and then fastened together. This design facilitates easy installation and removal, making it useful for applications where adjustments or maintenance are required. The Split Collar provides structural support, alignment, and stability, ensuring that the connected components remain securely in place."@en ;
+             skos:prefLabel "Colar Bipartido"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#StopperCollar
 :StopperCollar rdf:type owl:Class ;
-               rdfs:subClassOf :SplitCollar .
-
+               rdfs:subClassOf :SplitCollar ;
+               dcterms:identifier "StopperCollar" ;
+               skos:prefLabel "Stopper Collar"@en ;
+               skos:definition "A component used to prevent the movement or displacement of other parts in subsea systems. The Stopper Collar is installed around the pipe or component and acts as a physical barrier to stop or limit movement, ensuring components stay in their intended positions. It is crucial for maintaining alignment and stability during installation, operation, or maintenance, providing secure positioning and preventing unwanted shifts or displacements."@en ;
+               skos:prefLabel "Colar Batente"@pt-br ;
+               :ifc_equivalentClass "IfcPipeFitting" ;
+               skos:altLabel "Stopper Clamp"@en ;
+               skos:altLabel "Locking Collar"@en ;
+               skos:altLabel "Positioning Collar"@en ;
+               skos:altLabel "Retention Collar"@en .
 
 ###  https://w3id.org/energy-domain/core#StudSet
 :StudSet rdf:type owl:Class ;
-         rdfs:subClassOf :PhysicalConnection .
-
+         rdfs:subClassOf :PhysicalConnection ;
+         dcterms:identifier "StudSet" ;
+         skos:prefLabel "Stud Set"@en ;
+         skos:definition "Stud sets are essential fastening components used in subsea oil and gas interconnection end fittings to securely assemble and connect various parts of the equipment. Each set typically includes bolts, nuts, and washers, all made from high-strength, corrosion-resistant materials to endure the harsh subsea environment. These components are designed to provide reliable mechanical fastening, ensuring the structural integrity and leak-proof performance of the end fittings. The stud sets are carefully engineered to withstand high pressure and extreme temperatures, making them critical for maintaining the operational safety and longevity of subsea interconnections."@en ;
+         skos:prefLabel "Estojos"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#SubseaConnectionPoint
 :SubseaConnectionPoint rdf:type owl:Class ;
-                       rdfs:subClassOf :LogicalConnection .
-
+                       rdfs:subClassOf :LogicalConnection ;
+                       dcterms:identifier "SubseaConnectionPoint" ;
+                       skos:prefLabel "Subsea Connection Point"@en ;
+                       skos:definition "The Subsea Connection Point is the interface on subsea equipment where a flexible pipe connects. It serves as the critical link between the flexible pipe and subsea systems, enabling the transfer of fluids or gases. Designed to withstand high pressures and harsh underwater conditions, the Subsea External Point ensures a secure and reliable connection, facilitating efficient operation of various subsea systems."@en ;
+                       skos:prefLabel "Ponto de Conexão Submarino"@pt-br ;
+                       :ifc_equivalentClass "IfcPipeFitting" ;
+                       :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#SubseaLayout
 :SubseaLayout rdf:type owl:Class ;
-              rdfs:subClassOf :Location .
-
+              rdfs:subClassOf :Location ;
+              dcterms:identifier "SubseaLayout" ;
+              skos:prefLabel "Subsea Layout"@en ;
+              skos:definition "The arrangement or map of components and systems within a subsea environment, including pipelines, risers, manifolds, and other infrastructure."@en ;
+              skos:prefLabel "Arranjo Submarino"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#SubseaOilField
 :SubseaOilField rdf:type owl:Class ;
-                rdfs:subClassOf :SubseaLayout .
-
+                rdfs:subClassOf :SubseaLayout ;
+                dcterms:identifier "SubseaOilField" ;
+                skos:prefLabel "Subsea Oil Field"@en ;
+                skos:definition "A subsea oil field refers to an underwater reservoir of hydrocarbons located beneath the seabed. It involves the extraction of oil and gas from deposits situated in deepwater or shallow marine environments. The subsea oil field includes a range of equipment and infrastructure, such as subsea wells, pipelines, and production systems, all designed to safely and efficiently extract and transport hydrocarbons to processing facilities on the surface or shore. The development and operation of subsea oil fields require specialized technology and expertise to manage the challenges of deepwater environments and ensure the successful production and handling of resources."@en ;
+                skos:prefLabel "Campo de Petróleo Submarino"@pt-br ;
+                :ifc_equivalentClass "IfcSite" ;
+                skos:altLabel "Subsea Oil Reservoir"@en ;
+                skos:altLabel "Subsea Oil Site"@en ;
+                skos:altLabel "Subsea Petroleum Field"@en ;
+                skos:altLabel "Subsea Hydrocarbon Field"@en .
 
 ###  https://w3id.org/energy-domain/core#SubseaPipeline
 :SubseaPipeline rdf:type owl:Class ;
-                rdfs:subClassOf :Interconnection .
-
+                rdfs:subClassOf :Interconnection ;
+                dcterms:identifier "SubseaPipeline" ;
+                skos:prefLabel "Subsea Pipeline"@en ;
+                skos:definition "A Subsea Pipeline is a conduit installed on the seafloor designed to transport oil, gas, or other fluids from underwater production facilities to processing or storage locations on the surface or shore. Engineered to withstand harsh underwater conditions, including high pressures, corrosive environments, and dynamic movements, the Subsea Pipeline is constructed with durable materials and advanced technologies to ensure reliable and efficient fluid transfer."@en ;
+                skos:prefLabel "Linha Submarina"@pt-br ;
+                :ifc_equivalentClass "IfcBuilding" ;
+                :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#SubseaWell
 :SubseaWell rdf:type owl:Class ;
-            rdfs:subClassOf :EquipmentLocation .
-
+            rdfs:subClassOf :EquipmentLocation ;
+            dcterms:identifier "SubseaWell" ;
+            skos:prefLabel "Subsea Well"@en ;
+            skos:definition "A Subsea Well is a well located on the seafloor from which hydrocarbons such as oil and gas are extracted. Positioned underwater, it typically involves a wellhead assembly that includes valves, controls, and monitoring equipment to manage the extraction process. The Subsea Well is connected to surface facilities via pipelines and umbilicals, which facilitate the transport of extracted resources and the provision of necessary services like power and communication. Designed to operate under high pressure and harsh marine conditions, the subsea well is a critical component of offshore oil and gas production systems."@en ;
+            skos:prefLabel "Poço"@pt-br ;
+            :ifc_equivalentClass "IfcBuilding" ;
+            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#TapeLayer
 :TapeLayer rdf:type owl:Class ;
-           rdfs:subClassOf :WoundLayer .
-
+           rdfs:subClassOf :WoundLayer ;
+           dcterms:identifier "TapeLayer" ;
+           skos:prefLabel "Tape Layer"@en ;
+           skos:definition "A layer within the structure of a subsea flexible pipe composed of tape-like materials. This layer is designed to provide additional reinforcement and protection. Typically made from high-strength polymers or other durable materials, the tape layer contributes to the pipe’s overall flexibility, structural integrity, and resistance to external environmental factors. Engineered for harsh underwater conditions, it helps maintain the performance and durability of the flexible pipe system."@en ;
+           skos:prefLabel "Camada de Fita"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#TensileArmour
 :TensileArmour rdf:type owl:Class ;
-               rdfs:subClassOf :WireLayer .
-
+               rdfs:subClassOf :WireLayer ;
+               dcterms:identifier "TensileArmour" ;
+               skos:prefLabel "Tensile Armour"@en ;
+               skos:definition "Protective layer designed to withstand high tensile stresses and mechanical loads, Tensile Armour is composed of high-strength steel wires or reinforced materials arranged in a helical configuration around the riser. It provides essential resistance to tension and shields the inner layers from mechanical damage and wear, ensuring the riser's integrity and durability during installation and operation in extreme underwater conditions."@en ;
+               skos:prefLabel "Armadura de Tração"@pt-br ;
+               :ifc_equivalentClass "IfcPipeSegment" ;
+               :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#TopBendStiffener
 :TopBendStiffener rdf:type owl:Class ;
-                  rdfs:subClassOf :BendStiffener .
-
+                  rdfs:subClassOf :BendStiffener ;
+                  dcterms:identifier "TopBendStiffener" ;
+                  skos:prefLabel "Top Bend Stiffener"@en ;
+                  skos:definition "Designed to support and stabilize the riser where it transitions from the seabed to the floating platform or vessel, the Top Bend Stiffener is composed of high-strength materials such as steel or composites. It helps prevent excessive bending, distributes mechanical loads, and enhances flexibility management, ensuring the riser's structural integrity and performance during installation and operation in dynamic offshore conditions."@en ;
+                  skos:prefLabel "Enrijecedor de Curvatura de Topo"@pt-br ;
+                  :ifc_equivalentClass "IfcPipeFitting" ;
+                  skos:altLabel "Top Bending Stiffener"@en ;
+                  skos:altLabel "Stiffener"@en ;
+                  skos:altLabel "Curvature Stiffener"@en .
 
 ###  https://w3id.org/energy-domain/core#TopsideConnectionPoint
 :TopsideConnectionPoint rdf:type owl:Class ;
-                        rdfs:subClassOf :LogicalConnection .
-
+                        rdfs:subClassOf :LogicalConnection ;
+                        dcterms:identifier "TopsideConnectionPoint" ;
+                        skos:prefLabel "Topside Connection Point"@en ;
+                        skos:definition "Designed to connect the riser to the floating platform or vessel, the Topside Connection Point is a crucial component that ensures a secure and reliable interface between the riser and the topside facilities. Composed of high-strength materials, this connector is engineered to handle the mechanical loads and dynamic conditions of offshore environments. It facilitates the transfer of fluids and provides structural stability, playing a key role in maintaining the overall integrity and functionality of the riser system."@en ;
+                        skos:prefLabel "Ponto de Conexão de Topo"@pt-br ;
+                        :ifc_equivalentClass "IfcPipeFitting" .
 
 ###  https://w3id.org/energy-domain/core#TransportLineSegment
 :TransportLineSegment rdf:type owl:Class ;
-                      rdfs:subClassOf :LinearObject .
-
+                      rdfs:subClassOf :LinearObject ;
+                      dcterms:identifier "TransportLineSegment" ;
+                      skos:prefLabel "Transport Line Segment"@en ;
+                      skos:definition "Line for conducting some type of flow."@en ;
+                      skos:prefLabel "Segmento de Linha de Transporte"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#UNSBoltSet
 :UNSBoltSet rdf:type owl:Class ;
-            rdfs:subClassOf :BoltSet .
-
+            rdfs:subClassOf :BoltSet ;
+            dcterms:identifier "UNSBoltSet" ;
+            skos:prefLabel "UNS Bolt Set"@en ;
+            skos:definition "A set of bolts conforming to the Unified Numbering System (UNS) standard, ensuring material consistency and reliability in subsea applications."@en ;
+            skos:prefLabel "Conjunto de Parafusos UNS"@pt-br ;
+            :ifc_equivalentClass "IfcMechanicalFastener" ;
+            skos:altLabel "UNSBoltSet"@en ;
+            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#UNSStudSet
 :UNSStudSet rdf:type owl:Class ;
-            rdfs:subClassOf :StudSet .
-
+            rdfs:subClassOf :StudSet ;
+            dcterms:identifier "UNSStudSet" ;
+            skos:prefLabel "UNS Stud Set"@en ;
+            skos:definition "UNS stud sets are essential fastening components for subsea oil and gas components, tailored to securely join equipment parts. Each set comprises bolts, nuts, and washers, all in UNS sizing and crafted from high-strength, corrosion-resistant materials to endure the challenging subsea environment. These components provide robust fastening, ensuring structural integrity and leak prevention in end fittings. UNS stud sets are engineered to withstand high pressure and extreme temperatures, playing a vital role in the safety and longevity of subsea interconnections."@en ;
+            skos:prefLabel "Conjunto de Estojos UNS"@pt-br ;
+            skos:altLabel "UNS Stud"@en ;
+            skos:altLabel "UNS Threaded Rod"@en ;
+            :ifc_predefinedType "USERDEFINED" .
 
 ###  https://w3id.org/energy-domain/core#WireLayer
 :WireLayer rdf:type owl:Class ;
-           rdfs:subClassOf :ArmourLayer .
-
+           rdfs:subClassOf :ArmourLayer ;
+           dcterms:identifier "WireLayer" ;
+           skos:prefLabel "Wire Layer"@en ;
+           skos:definition "Basis for all wired layers."@en ;
+           skos:prefLabel "Camada de Arame"@pt-br .
 
 ###  https://w3id.org/energy-domain/core#WoundLayer
 :WoundLayer rdf:type owl:Class ;
-            rdfs:subClassOf :FlexibleStructureLayer .
-
-
-###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+            rdfs:subClassOf :FlexibleStructureLayer ;
+            dcterms:identifier "WoundLayer" ;
+            skos:prefLabel "Wound Layer"@en ;
+            skos:definition "Basis for all layers constructed by helical winding of one or more elements."@en ;
+            skos:prefLabel "Camada Espiralada"@pt-br .
